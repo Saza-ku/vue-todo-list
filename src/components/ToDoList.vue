@@ -1,6 +1,8 @@
 <template>
   <input v-model="inputValue">
-    入力した値: {{ inputValue }}
+  <button v-on:click="handleClick">
+    入力内容を表示
+  </button>
   <ul>
     <li v-for="todo in todoItems" v-bind:key="todo.id">
       {{ todo.text }}
@@ -17,6 +19,11 @@ export default {
         { id: 1, text: 'Go out to sea' },
         { id: 2, text: 'Invite the first member' }        
       ]
+    }
+  },
+  methods: {
+    handleClick() {
+      alert(this.inputValue)
     }
   }
 }
