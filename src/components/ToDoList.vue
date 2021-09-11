@@ -7,15 +7,12 @@
     v-model="filterValue"
     placeholder="フィルタテキスト">
   <ul>
-    <li
-      v-for="todo in filterdTodoItems"
+    <to-do-item
+      v-for="todo in filteredTodoItems"
       v-bind:key="todo.id"
-      class="todo-item"
-      v-bind:class="{'done': todo.done}"
-      v-on:click="todo.done = !todo.done">
-      <span v-if="todo.done">✔︎</span>
-      {{ todo.text }}
-    </li>
+      v-bind:text="todo.text"
+      v-bind:done="todo.done"
+    />
   </ul>
 </template>
 
@@ -26,7 +23,9 @@
 </style>
 
 <script>
+import ToDoItem from './ToDoItem.vue'
 export default {
+  components: { ToDoItem },
   data() {
     return {
       inputValue: '',
@@ -45,7 +44,7 @@ export default {
     }
   },
   computed: {
-    filterdTodoItems() {
+    filteredTodoItems() {
       if (!this.filterValue) {
         return this.todoItems
       }
