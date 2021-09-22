@@ -1,7 +1,8 @@
 <template>
   <li
     class="todo-item"
-    v-bind:class="{'done': done}">
+    v-bind:class="{'done': done}"
+    v-on:click="handleClick">
     <span v-if="done">✔︎</span> {{ text }}
   </li>
 </template>
@@ -15,6 +16,12 @@ export default {
     done: {
       type: Boolean
     },
+  },
+  emits: ['toggle'],
+  methods: {
+    handleClick() {
+      this.$emit('toggle')
+    }
   }
 }
 </script>
