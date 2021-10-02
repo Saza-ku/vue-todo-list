@@ -10,10 +10,10 @@
     <to-do-item
       v-for="todo in filteredTodoItems"
       v-bind:key="todo.id"
-      v-bind:text="todo.text"
       v-bind:done="todo.done"
-      v-on:toggle="todo.done = !todo.done"
-    />
+      v-on:toggle="todo.done = !todo.done">
+      {{ todo.text }}
+    </to-do-item>
   </ul>
 </template>
 
